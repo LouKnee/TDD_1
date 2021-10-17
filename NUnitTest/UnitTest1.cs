@@ -25,5 +25,13 @@ namespace NUnitTest
             Assert.That(() => set.Contains("Hello"), Is.False);
         }
 
+        [Test]
+        public void StringSetRemove()
+        {
+            StringSet set = new StringSet();
+            set.Add("Hello");
+            Assert.That(() => set.Remove("Hello"), Throws.Nothing);
+        }
+
     }
 }

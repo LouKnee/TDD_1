@@ -23,5 +23,13 @@ namespace TDD_1
         {
             return _items.Contains(item);
         }
+
+        public void Remove(string item)
+        {
+            if (_items.Contains(item))
+            {
+                _items.Remove(item);
+            }
+        }
     }
 }
