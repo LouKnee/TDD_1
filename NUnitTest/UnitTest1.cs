@@ -1,7 +1,9 @@
 using NUnit.Framework;
+using TDD_1;
 
 namespace NUnitTest
 {
+    [TestFixture]
     public class Tests
     {
         [SetUp]
@@ -10,9 +12,11 @@ namespace NUnitTest
         }
 
         [Test]
-        public void StringSetTest()
+        public void StringSetAdd()
         {
-            Assert.Pass();
+            StringSet set = new StringSet();
+            Assert.That(() => set.Add("Hello"), Throws.Nothing);
         }
+
     }
 }
