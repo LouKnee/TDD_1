@@ -18,5 +18,10 @@ namespace TDD_1
         {
             _items.Add(item);
         }
+
+        public bool Contains(string item)
+        {
+            return _items.Contains(item);
+        }
     }
 }

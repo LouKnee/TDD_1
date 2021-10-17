@@ -18,5 +18,12 @@ namespace NUnitTest
             Assert.That(() => set.Add("Hello"), Throws.Nothing);
         }
 
+        [Test]
+        public void StringSetContains()
+        {
+            StringSet set = new StringSet();
+            Assert.That(() => set.Contains("Hello"), Is.False);
+        }
+
     }
 }
