@@ -33,5 +33,30 @@ namespace NUnitTest
             Assert.That(() => set.Remove("Hello"), Throws.Nothing);
         }
 
+        [Test]
+        public void StringSetCountItems()
+        {
+            StringSet set = new StringSet();
+            set.Add("Hello");
+            Assert.That(() => set.CountItems(), Is.EqualTo(1));
+        }
+
+        [Test]
+        public void StringSetUnion()
+        {
+            StringSet setA = new StringSet();
+            setA.Add("Hello");
+            setA.Add("Good day");
+            StringSet setB = new StringSet();
+            setB.Add("Goodbye");
+            setB.Add("So long");
+            StringSet setC= new StringSet();
+            setC.Add("Hello");
+            setC.Add("Good day");
+            setC.Add("Goodbye");
+            setC.Add("So long");
+            Assert.That(() => setA.Union(setB), Is.EquivalentTo(setC));
+        }
+
     }
 }
