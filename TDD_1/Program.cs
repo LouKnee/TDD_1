@@ -11,6 +11,8 @@ namespace TDD_1
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            // First change after repository creation
         }
     }
 }
