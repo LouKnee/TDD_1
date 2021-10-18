@@ -50,12 +50,48 @@ namespace NUnitTest
             StringSet setB = new StringSet();
             setB.Add("Goodbye");
             setB.Add("So long");
-            StringSet setC= new StringSet();
+            StringSet setC = new StringSet();
             setC.Add("Hello");
             setC.Add("Good day");
             setC.Add("Goodbye");
             setC.Add("So long");
-            Assert.That(() => setA.Union(setB), Is.EquivalentTo(setC));
+            Assert.That(() => setA.Union(setB).Items, Is.EquivalentTo(setC.Items));
+        }
+
+        [Test]
+        public void StringSetUnionWithDuplicates()
+        {
+            StringSet setA = new StringSet();
+            setA.Add("Hello");
+            setA.Add("Good day");
+            setA.Add("Goodbye");
+            setA.Add("So long");
+            StringSet setB = new StringSet();
+            setB.Add("Goodbye");
+            setB.Add("So long");
+            StringSet setC = new StringSet();
+            setC.Add("Hello");
+            setC.Add("Good day");
+            setC.Add("Goodbye");
+            setC.Add("So long");
+            Assert.That(() => setA.Union(setB).Items, Is.EquivalentTo(setC.Items));
+        }
+
+        [Test]
+        public void StringSetIntersection()
+        {
+            StringSet setA = new StringSet();
+            setA.Add("Hello");
+            setA.Add("Goodbye");
+            setA.Add("Good day");
+            StringSet setB = new StringSet();
+            setB.Add("Goodbye");
+            setB.Add("Good day");
+            setB.Add("So long");
+            StringSet setC = new StringSet();
+            setC.Add("Good day");
+            setC.Add("Goodbye");
+            Assert.That(() => setA.Intersect(setB).Items, Is.EquivalentTo(setC.Items));
         }
 
     }

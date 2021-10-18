@@ -16,9 +16,23 @@ namespace TDD_1
             _items = new List<string>();
         }
 
+        public StringSet(IList<string> items)
+        {
+            _items = items;
+        }
+
+        public IList<string> Items
+        {
+            get => (List<string>)_items;
+            private set => _items = value;
+        }
+
         public void Add(string item)
         {
-            _items.Add(item);
+            if (!_items.Contains(item))
+            {
+                _items.Add(item);
+            }
         }
 
         public bool Contains(string item)
@@ -41,16 +55,16 @@ namespace TDD_1
 
         public StringSet Union(StringSet setB)
         {
-            StringSet combined = new StringSet();
-            foreach (string item in _items)
-            {
-                combined.Add(item);
-            }
-            foreach (string item in setB)
-            {
-                combined.Add(item);
-            }
-            return combined;
+           var itemsUnion = Items.Union(setB.Items).ToList();
+           StringSet setUnion = new StringSet(itemsUnion);
+           return setUnion;
+        }
+
+        public StringSet Intersect(StringSet setB)
+        {
+            var itemsIntersection = Items.Intersect(setB.Items).ToList();
+            StringSet setIntersection = new StringSet(itemsIntersection);
+            return setIntersection;
         }
 
         public IEnumerator<string> GetEnumerator()
@@ -62,5 +76,6 @@ namespace TDD_1
         {
             return ((IEnumerable)_items).GetEnumerator();
         }
+
     }
 }
