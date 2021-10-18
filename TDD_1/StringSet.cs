@@ -67,6 +67,11 @@ namespace TDD_1
             return setIntersection;
         }
 
+        public void Clear()
+        {
+            _items.Clear();
+        }
+
         public IEnumerator<string> GetEnumerator()
         {
             return _items.GetEnumerator();

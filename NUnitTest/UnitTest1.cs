@@ -94,5 +94,32 @@ namespace NUnitTest
             Assert.That(() => setA.Intersect(setB).Items, Is.EquivalentTo(setC.Items));
         }
 
+        [Test]
+        public void StringSetClear()
+        {
+            StringSet setA = new StringSet();
+            setA.Add("Hello");
+            setA.Add("Goodbye");
+            setA.Add("Good day");
+            setA.Clear();
+            Assert.That(() => setA.Items, Is.Empty);
+        }
+
+        [Test]
+        public void StringSetEnumerate()
+        {
+            string[] items = { "Hello", "Goodbye", "Good day" };
+
+            StringSet setA = new StringSet();
+            setA.Add(items[0]);
+            setA.Add(items[1]);
+            setA.Add(items[2]);
+            int i = 0;
+            foreach (string item in setA)
+            {
+                Assert.That(() => item, Is.EqualTo(items[i++]));
+            }
+        }
+
     }
 }
